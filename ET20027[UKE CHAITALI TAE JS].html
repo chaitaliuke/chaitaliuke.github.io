@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="style/main.css">
+	<style type="text/css">
+			@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+				*{
+					margin:0;
+					padding: 0;
+					outline: 0;
+				}
+				
+				.filter{
+					position: absolute;
+					left: 0;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					z-index: 1;
+					background: rgb(233,76,161);
+					background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+					background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+					background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+					/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1 );*/
+					opacity: .7;
+					}
+
+				table{
+					position: absolute;
+					z-index: 2;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%,-45%);
+					width: 60%; 
+					border-collapse: collapse;
+					border-spacing: 12;
+					box-shadow: 0 2px 15px rgba(64,64,64,.7);
+					border-radius: 10px 10px 0 0;
+					overflow: hidden;
+					}
+
+				td {
+					padding: 15px 20px;
+					text-align: center;
+					}
+
+				h5{
+					padding: 15px 20px;
+					background-color: #ba68c8;
+					color: #fafafa;
+					font-family: 'Open Sans',Sans-serif;
+					font-weight: 100;
+					text-transform: uppercase;
+					}
+
+				tr{
+					width: 70%;
+					background-color: #fafafa;
+					font-family: 'Montserrat', sans-serif;
+					}
+				    tr:nth-child(even){
+				    background-color: #eeeeee;
+				    }
+
+				span {
+		            /*border-bottom: 8px white;
+		            display: inline-block;
+		            vertical-align: top;*/
+		            text-decoration: underline;
+		        }
+   
+   
+	</style>
+		<meta charset="utf-8">
+		<title>Committee Registration Form</title>
+	<script type="text/javascript">
+				function verify()
+				{
+					var name = document.getElementById("name");
+					var gender = document.getElementsByName("gender");
+					var pass = document.getElementById("pass");
+					var email = document.getElementById("mail");
+					//var course = document.getElementById("tb");
+					var textarea = document.getElementById("textarea");
+					var msg = new Array();
+					var flag = 1;
+					var message = "Following Details are Required\n";
+					var message2 = "Following Details are Required<br>";
+					var message3 = "Following Details are Required<br>";
+					var message4 = "Following Details are Required<br>";
+					var message5 = "Following Details are Required<br>";
+					var message6 = "Following Details are Required<br>";
+					var message7 = "Following Details are Required<br>";
+					var message8 = "Following Details are Required<br>";
+					var message9 = "Following Details are Required<br>";
+					
+
+					if(name.value == "")
+					{
+						msg[0] = "Name is Required";
+						flag = 0;
+					} else { msg[0] = ""; }
+					
+					if(gender[0].checked == false && gender[1].checked == false)
+					{
+						msg[1] = "Select Gender";
+						flag = 0;
+					} else { msg[1] = ""; }
+						
+					if(pass.value == "")
+					{
+						msg[2] = "Password is Required";
+						flag = 0;
+					} else { msg[2] = ""; }
+					
+					if(pass.value.length < 8)
+					{
+						msg[3] = "Password must be 8 characters long";
+						flag = 0;
+					} else { msg[3] = ""; }
+					
+					if(email.value==""){
+
+						msg[4]="Email is Required";
+						flag = 0;
+					} else { msg[4] = ""; };
+					
+					if(phno.value == "")
+					{
+						msg[5] = "Phone number is Required";
+						flag = 0;
+					} else { msg[5] = ""; }
+					
+					if(phno.value.length !== 10)
+					{
+						msg[6] = " Invalid Phone number";
+						flag = 0;
+					} else { msg[6] = ""; }
+
+					/*if(tb.value == 'Select')
+					{
+						msg[7]="Select your department from the list";
+						flag = 0;
+
+						//alert('Select your country from the list');
+						//tb.focus();
+						//return false;
+					}
+						else{ msg[7] = "";};*/
+					
+					if(textarea.value == "")
+					{
+						msg[7] = "textarea is Required";
+						flag = 0;
+					} else { msg[7] = ""; }
+					
+					if(name.value == "")
+					{
+						msg[8] = "USN Number is Required";
+						flag = 0;
+					} else { msg[8] = ""; }
+
+					if(flag == 0)
+					{
+						// Show Error Messages
+						for(var x=0;x<=8;x++)
+						{
+							if(msg[x] != "")
+							{
+								message += msg[x] + "\n";
+								message2 += msg[x] + "<br>";
+								message3 += msg[x] + "<br>";
+								message4 += msg[x] + "<br>";
+								message5 += msg[x] + "<br>";
+								message6 += msg[x] + "<br>";
+								message7 += msg[x] + "<br>";
+								message8 += msg[x] + "<br>";
+								//message9 += msg[x] + "<br>";
+
+							}
+						}
+						alert(message);
+						document.getElementById("abc").innerHTML = "<p style='color:red;'>"+message2+"</p>";
+						return false;
+					}
+
+					
+					else
+					{
+						alert("Thank you!! Your Registration has been successfully Done.....We will contact you very soon! ")
+						return true;
+					}
+				}
+
+		</script>
+</head>
+
+<body>
+
+<div align="center"  class="filter"></div>
+	<br>
+		<h1 align="center"><span>Committee Registration Form</span></h1>
+    <h3 id="abc"></h3>
+    <br>
+    <form method="post" action="" onSubmit="return verify()">
+    	<table border="1" cellspacing="0" cellpadding="10" >
+        		<tr>
+        		<td colspan="2" align="right">
+        		<h5>* All fields are mandatory</h5></td>
+             	</tr>
+       			<tr>
+       			<td align="right">Name: </td>
+        		<td><input type="text" name="name" id="name" size="25" placeholder="Enter Full Name" /></td>
+       			</tr>
+       			<tr>
+       			<td align="right">USN No: </td>
+        		<td><input type="text" name="usn" id="usn" size="25" placeholder="Enter USN No." /></td>
+       			</tr>
+      			<tr>
+       			<td align="right">Gender:</td>
+        		<td><input type="radio" name="gender" value="Male" /> Male
+        		<input type="radio" name="gender" value="Female" /> Female
+        		</td>
+        		</tr>
+        		<tr>
+        		<td align="right">Password:</td>
+            	<td><input type="password" name="password" size="25" id="pass" placeholder="Enter Password" /></td>
+            	</tr>
+          		<tr>
+        		<td align="right">Email Address:</td>
+            	<td><input type="email" name="email" size="25" id="mail" placeholder="example@gmail.com" /></td>
+            	</tr>
+            	<tr>
+            	<td align="right">Phone Number:</td>
+            	<td><input type="text" name="mobileno" size="25" id="phno" placeholder="Enter 10 digit phone number" /></td>
+            	</tr>
+            	<tr>    
+            	<td align="right"><label>Depatment: </label></td>    
+                <td>    
+                    <select name="course" id="tb" >    
+                        <option value="select course">select course</option>    
+                        <option value="HTML">Computer Science and Engineering</option>    
+                        <option value="CSS">Electronics and Telecommuincation Engg</option>    
+                        <option value="JavaScript">Aeronautical Engineering</option>    
+                        <option value="Java">Data Science</option>    
+                    </select>    
+                </td>    
+            	</tr> 
+            	<td >Select the Position You Interested in :  
+		 		<td> 
+				President      : <input type="checkbox" id="check1"  ><br> 
+				Technical Head : <input type="checkbox" id="check1" ><br>
+				Event Manger   : <input type="checkbox" id="check1"  > <br> 
+				Decoration Head: <input type="checkbox" id="check1" >  </td></tr>
+  				<td >Why do you want to be part of the team:  
+				<td>  <textarea rows = "5" cols = "60"  id="textarea" name="textarea"></textarea>
+            	<tr>
+            	<tr>
+            	<td align="center" colspan="2">
+                <input type="submit" value="REGISTER" />
+                <input type="reset" value="CLEAR" />
+                </td>
+                </tr>
+                <tr>
+                	<td align="center" colspan="2"><b>Name: Uke Chaitali | USN No: ET20027 | Depatment: ETC |Section: A | TAE - Registration Form</td>
+        </table>
+        
+        	
+      
+
+        
+    </form>
+    <footer align="center"></footer>
+</div>
+</body>
+</html>
